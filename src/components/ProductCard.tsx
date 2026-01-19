@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Product } from "@/types";
 import { useCart } from "@/context/CartContext";
 // import { formatPrice } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface ProductCardProps {
   product: Product;
@@ -17,8 +18,8 @@ export function ProductCard({ product }: ProductCardProps) {
   }
 
   return (
-    <motion.article
-      className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-zinc-100"
+    <motion.div
+      className="flex flex-col overflow-hidden rounded-xl border-zinc-100 bg-white p-0 shadow-sm"
       whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(0,0,0,0.08)" }}
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
     >
@@ -30,7 +31,7 @@ export function ProductCard({ product }: ProductCardProps) {
         )}
         <img src={product.imageUrl} alt={product.name} className="max-h-28 object-contain" />
       </div>
-      <div className="flex flex-1 flex-col gap-2 p-3">
+      <Card className="flex flex-1 flex-col gap-2 p-3">
         <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-500">
           {product.category}
         </p>
@@ -46,8 +47,8 @@ export function ProductCard({ product }: ProductCardProps) {
             Comprar
           </button>
         </div>
-      </div>
-    </motion.article>
+      </Card>
+    </motion.div>
   );
 }
 

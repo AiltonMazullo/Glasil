@@ -2,7 +2,7 @@
 
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
-import { formatPrice } from "@/lib/utils";
+// import { formatPrice } from "@/lib/utils";
 
 export default function CheckoutPage() {
   const { user } = useAuth();
@@ -24,14 +24,14 @@ export default function CheckoutPage() {
                 {item.quantity}x {item.product.name}
               </span>
               <span className="font-semibold text-orange-500">
-                {formatPrice(item.product.price * item.quantity)}
+                {/* {formatPrice(item.product.price * item.quantity)} */}
               </span>
             </li>
           ))}
         </ul>
         <div className="mt-4 flex items-center justify-between border-t border-zinc-200 pt-4 text-sm">
           <span className="font-medium text-zinc-700">Total</span>
-          <span className="text-lg font-semibold text-orange-500">{formatPrice(totalAmount)}</span>
+          {/* <span className="text-lg font-semibold text-orange-500">{formatPrice(totalAmount)}</span> */}
         </div>
         <p className="mt-4 text-xs text-zinc-500">
           A etapa de pagamento ainda será implementada. Esta tela existe apenas para demonstrar o fluxo protegido por login.

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { z } from "zod";
@@ -9,7 +9,7 @@ import { useAuth } from "@/context/AuthContext";
 
 type LoginErrors = Partial<Record<keyof LoginFormValues, string>> & { form?: string };
 
-export default function LoginPage() {
+function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -57,63 +57,71 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-8">
-      <main className="w-full max-w-md rounded-2xl bg-white p-8 shadow-md">
-        <div className="mb-6 text-center">
-          <p className="text-sm font-medium text-orange-500">GLASIL</p>
-          <h1 className="mt-1 text-xl font-semibold text-zinc-800">Entrar na loja virtual</h1>
-          <p className="mt-1 text-xs text-zinc-500">Acesse sua conta para finalizar suas compras.</p>
+    <main className="w-full max-w-md rounded-2xl bg-white p-8 shadow-md">
+      <div className="mb-6 text-center">
+        <p className="text-sm font-medium text-orange-500">GLASIL</p>
+        <h1 className="mt-1 text-xl font-semibold text-zinc-800">Entrar na loja virtual</h1>
+        <p className="mt-1 text-xs text-zinc-500">Acesse sua conta para finalizar suas compras.</p>
+      </div>
+      {errors.form && <p className="mb-3 text-xs text-red-500">{errors.form}</p>}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-1">
+          <label htmlFor="email" className="text-xs font-medium text-zinc-700">
+            E-mail
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            value={values.email}
+            onChange={handleChange}
+            className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-sm outline-none ring-orange-500/40 focus:border-orange-500 focus:ring-2"
+            placeholder="seuemail@exemplo.com"
+          />
+          {errors.email && <p className="text-[11px] text-red-500">{errors.email}</p>}
         </div>
-        {errors.form && <p className="mb-3 text-xs text-red-500">{errors.form}</p>}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1">
-            <label htmlFor="email" className="text-xs font-medium text-zinc-700">
-              E-mail
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={values.email}
-              onChange={handleChange}
-              className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-sm outline-none ring-orange-500/40 focus:border-orange-500 focus:ring-2"
-              placeholder="seuemail@exemplo.com"
-            />
-            {errors.email && <p className="text-[11px] text-red-500">{errors.email}</p>}
-          </div>
 
-          <div className="space-y-1">
-            <label htmlFor="password" className="text-xs font-medium text-zinc-700">
-              Senha
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={values.password}
-              onChange={handleChange}
-              className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-sm outline-none ring-orange-500/40 focus:border-orange-500 focus:ring-2"
-              placeholder="Mínimo de 6 caracteres"
-            />
-            {errors.password && <p className="text-[11px] text-red-500">{errors.password}</p>}
-          </div>
+        <div className="space-y-1">
+          <label htmlFor="password" className="text-xs font-medium text-zinc-700">
+            Senha
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value={values.password}
+            onChange={handleChange}
+            className="w-full rounded-lg border border-zinc-200 px-3 py-2 text-sm outline-none ring-orange-500/40 focus:border-orange-500 focus:ring-2"
+            placeholder="Mínimo de 6 caracteres"
+          />
+          {errors.password && <p className="text-[11px] text-red-500">{errors.password}</p>}
+        </div>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="mt-2 w-full rounded-full bg-orange-500 py-2.5 text-sm font-semibold text-white transition-transform duration-150 hover:scale-[1.01] hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-orange-300"
-          >
-            {isSubmitting ? "Entrando..." : "Entrar"}
-          </button>
-        </form>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="mt-2 w-full rounded-full bg-orange-500 py-2.5 text-sm font-semibold text-white transition-transform duration-150 hover:scale-[1.01] hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-orange-300"
+        >
+          {isSubmitting ? "Entrando..." : "Entrar"}
+        </button>
+      </form>
 
-        <p className="mt-4 text-center text-xs text-zinc-500">
-          Ainda não tem conta?
-          <Link href="/register" className="ml-1 font-semibold text-orange-500">
-            Criar conta
-          </Link>
-        </p>
-      </main>
+      <p className="mt-4 text-center text-xs text-zinc-500">
+        Ainda não tem conta?
+        <Link href="/register" className="ml-1 font-semibold text-orange-500">
+          Criar conta
+        </Link>
+      </p>
+    </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-8">
+      <Suspense fallback={<div className="text-center text-zinc-500">Carregando formulário...</div>}>
+        <LoginForm />
+      </Suspense>
     </div>
   );
 }

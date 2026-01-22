@@ -14,8 +14,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const AUTH_USER_STORAGE_KEY = "glasil_user";
-const AUTH_COOKIE_NAME = "glasil_auth";
+const AUTH_USER_STORAGE_KEY = "busca_busca_user";
+const AUTH_COOKIE_NAME = "busca_busca_auth";
 
 function setAuthCookie(isLoggedIn: boolean) {
   if (typeof document === "undefined") return;

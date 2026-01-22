@@ -13,7 +13,7 @@ export function Header() {
   return (
     <header className="w-full bg-white shadow-sm">
       {!isAuthPage && (
-        <div className="w-full bg-orange-500 text-xs font-medium text-white">
+        <div className="w-full bg-primary text-xs font-medium text-white">
           <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-2">
             <span>COMPRE NO SITE E RECEBA EM CASA</span>
           </div>
@@ -25,7 +25,7 @@ export function Header() {
             <span className="text-lg font-semibold">≡</span>
           </div>
           <Link href="/" className="flex flex-col leading-tight">
-            <span className="text-lg font-semibold text-orange-500">GLASIL</span>
+            <span className="text-lg font-semibold text-primary">Busca Busca</span>
             <span className="text-xs text-zinc-500">Loja Virtual</span>
           </Link>
         </div>
@@ -38,17 +38,17 @@ export function Header() {
                 placeholder="O que você procura?"
                 className="w-full bg-transparent text-xs outline-none placeholder:text-zinc-400"
               />
-              <span className="ml-2 text-orange-500">🔍</span>
+              <span className="ml-2 text-primary">🔍</span>
             </div>
 
             <button
               type="button"
               onClick={openCart}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 text-white transition-transform duration-150 hover:scale-105"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white transition-transform duration-150 hover:scale-105"
             >
               <span className="text-lg">🛒</span>
               {totalQuantity > 0 && (
-                <span className="absolute -right-1 -top-1 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-white px-1 text-[10px] font-semibold text-orange-500 shadow-sm">
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-white px-1 text-[10px] font-semibold text-primary shadow-sm">
                   {totalQuantity}
                 </span>
               )}

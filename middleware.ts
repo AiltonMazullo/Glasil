@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const PROTECTED_PATHS = ["/checkout", "/pagamento"];
-const AUTH_COOKIE_NAME = "glasil_auth";
+const AUTH_COOKIE_NAME = "busca_busca_auth";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

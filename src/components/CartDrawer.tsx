@@ -33,7 +33,7 @@ export function CartDrawer() {
           >
             <header className="flex items-center justify-between border-b border-zinc-200 px-4 py-4">
               <div className="flex items-center gap-2">
-                <span className="text-xl text-orange-500">🛒</span>
+                <span className="text-xl text-primary">🛒</span>
                 <h2 className="text-sm font-semibold text-zinc-800">Carrinho de compras</h2>
               </div>
               <button
@@ -80,7 +80,7 @@ export function CartDrawer() {
                       </div>
                       <div className="mt-2 flex items-center justify-between text-xs text-zinc-500">
                         <span>Quantidade: {item.quantity}</span>
-                        <span className="text-sm font-semibold text-orange-500">
+                        <span className="text-sm font-semibold text-primary">
                           {/* {formatPrice(item.product.price * item.quantity)} */}
                         </span>
                       </div>
@@ -102,14 +102,14 @@ export function CartDrawer() {
                 type="button"
                 onClick={handleCheckout}
                 disabled={items.length === 0}
-                className="mt-4 w-full rounded-full bg-orange-500 py-3 text-sm font-semibold uppercase tracking-wide text-white disabled:cursor-not-allowed disabled:bg-orange-300"
+                className="mt-4 w-full rounded-full bg-primary py-3 text-sm font-semibold uppercase tracking-wide text-white disabled:cursor-not-allowed disabled:bg-zinc-300"
               >
                 Comprar agora
               </button>
               <button
                 type="button"
                 onClick={closeCart}
-                className="mt-3 w-full text-center text-xs font-medium text-orange-500"
+                className="mt-3 w-full text-center text-xs font-medium text-primary"
               >
                 Continuar comprando
               </button>

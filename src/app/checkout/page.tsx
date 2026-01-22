@@ -23,7 +23,7 @@ export default function CheckoutPage() {
               <span>
                 {item.quantity}x {item.product.name}
               </span>
-              <span className="font-semibold text-orange-500">
+              <span className="font-semibold text-primary">
                 {/* {formatPrice(item.product.price * item.quantity)} */}
               </span>
             </li>
@@ -31,7 +31,7 @@ export default function CheckoutPage() {
         </ul>
         <div className="mt-4 flex items-center justify-between border-t border-zinc-200 pt-4 text-sm">
           <span className="font-medium text-zinc-700">Total</span>
-          {/* <span className="text-lg font-semibold text-orange-500">{formatPrice(totalAmount)}</span> */}
+          {/* <span className="text-lg font-semibold text-primary">{formatPrice(totalAmount)}</span> */}
         </div>
         <p className="mt-4 text-xs text-zinc-500">
           A etapa de pagamento ainda será implementada. Esta tela existe apenas para demonstrar o fluxo protegido por login.

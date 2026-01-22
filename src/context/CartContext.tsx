@@ -19,7 +19,7 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
 
-const CART_STORAGE_KEY = "glasil_cart";
+const CART_STORAGE_KEY = "busca_busca_cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);

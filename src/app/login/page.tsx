@@ -4,7 +4,7 @@ import { FormEvent, Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { z } from "zod";
-import { loginSchema, type LoginFormValues } from "@/lib/schemas";
+import { loginSchema, type LoginFormValues } from "@/lib/schemas";  
 import { useAuth } from "@/context/AuthContext";
 
 type LoginErrors = Partial<Record<keyof LoginFormValues, string>> & { form?: string };
@@ -59,7 +59,7 @@ function LoginForm() {
   return (
     <main className="w-full max-w-md rounded-2xl bg-white p-8 shadow-md">
       <div className="mb-6 text-center">
-        <p className="text-sm font-medium text-orange-500">GLASIL</p>
+        <p className="text-sm font-medium text-orange-500">Busca Busca</p>
         <h1 className="mt-1 text-xl font-semibold text-zinc-800">Entrar na loja virtual</h1>
         <p className="mt-1 text-xs text-zinc-500">Acesse sua conta para finalizar suas compras.</p>
       </div>

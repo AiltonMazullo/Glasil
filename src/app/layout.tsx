@@ -3,8 +3,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Glasil Loja Virtual",
-  description: "E-commerce fictício inspirado na Glasil Loja Virtual",
+  title: "Busca Busca",
+  description: "E-commerce Busca Busca",
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 text-sm text-zinc-700 md:flex-row md:justify-between">
         <div className="space-y-2">
           <div className="flex flex-col">
-            <span className="text-base font-semibold text-orange-500">GLASIL</span>
+            <span className="text-base font-semibold text-primary">Busca Busca</span>
             <span className="text-xs text-zinc-500">Loja Virtual</span>
           </div>
           <p className="max-w-xs text-xs text-zinc-500">
@@ -14,13 +14,13 @@ export function Footer() {
         <div className="space-y-2 text-xs">
           <p className="font-semibold text-zinc-700">Entre em contato</p>
           <p>Tel: (55) 9 9638-5040</p>
-          <p>lojavirtual@glasil.com.br</p>
+          <p>lojavirtual@buscabusca.com.br</p>
         </div>
         <div className="space-y-3 text-xs">
           <p className="font-semibold text-zinc-700">Siga nas redes</p>
           <div className="flex gap-3">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange-50 text-orange-500">f</span>
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange-50 text-orange-500">in</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary">f</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary">in</span>
           </div>
         </div>
       </div>

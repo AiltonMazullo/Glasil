@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
@@ -145,12 +145,22 @@ export function Header() {
   const { totalQuantity, openCart } = useCart();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolledRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      const y = window.scrollY;
+
+      if (!isScrolledRef.current && y > 80) {
+        isScrolledRef.current = true;
+        setIsScrolled(true);
+      } else if (isScrolledRef.current && y < 20) {
+        isScrolledRef.current = false;
+        setIsScrolled(false);
+      }
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
